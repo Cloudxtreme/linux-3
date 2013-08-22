@@ -1,0 +1,16 @@
+=============================
+For mod_pagespeed:
+=============================
+
+Step 0: (Enable Git if necessary)
+ln -s /usr/local/cpanel/3rdparty/bin/git /usr/bin/git
+
+Step 1: Copy
+git clone http://github.com/pagespeed/cpanel.git /var/cpanel/easy/apache/custom_opt_mods/Cpanel/
+(If /custom_opt_mods/Cpanel already exists, git clone elsewhere and move /CPanel stuff into actual /Cpanel folder manually)
+
+Step 2: Create a Speed.pm.tar.gz
+cd /var/cpanel/easy/apache/custom_opt_mods/Cpanel/Easy
+tar -zcvf Speed.pm.tar.gz pagespeed
+
+Step 3: In cPanel WHM-> EasyApache - You will see the mod_pagepeed in the options to compile. Check and compile.
