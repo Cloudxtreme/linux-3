@@ -1,7 +1,7 @@
 Linux
 =====
 
-Linux Scripts &amp; Info (Troubleshooting)
+Linux Scripts -and- Info (Troubleshooting)
 
 ------------------------------------------------------------------------------------
 
