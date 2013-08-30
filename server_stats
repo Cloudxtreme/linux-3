@@ -1,0 +1,40 @@
+==================================================
+Shows most visited page in the last hour
+==================================================
+find /usr/local/apache/domlogs -maxdepth 1 -type f | egrep -v 'bytes_log|ftpx|ftp\.|error\.log'| xargs grep $(date -d "1 hour ago" +"%d/%b/%Y:%H") | awk '($6 ~ /POST/){print $7}' | sort | uniq -c | sort -n
+
+
+==================================================
+Highest traffic sites on cPanel (Apache Request)
+==================================================
+find /usr/local/apache/domlogs -maxdepth 1 -type f | egrep -v 'bytes_log|ftpx|ftp\.|error\.log'| xargs grep -c $(date -d "1 hour ago" +"%d/%b/%Y:%H") | grep -v ":0" | sed 's|/usr/local/apache/domlogs/||' | sed 's/:/ /' | sort -nk2 | tail
+
+
+==================================================
+Number of pagehits per site in last hour
+==================================================
+netstat -apn | egrep -m 1 ":80\ "|egrep LISTEN\|WAITING|awk '{print $7}'|cut -d / -f1|head -1|xargs lsof -p|grep -E \(domlogs\|statistics\/logs\/access\)|grep -v bytes_log|awk '{print $9}'|xargs grep -c $(date +"%d/%b/%Y:%H")|grep -v ':0'|sed 's/\/var\/www\/vhosts\/\|\/statistics\/logs\/access_log\|\/statistics\/logs\/access_ssl_log\|\/usr\/local\/apache\/domlogs\///g'
+
+
+==================================================
+Show HTTPD process path in top when running DSO
+==================================================
+lsof -n | grep ^httpd  | grep home
+
+
+==================================================
+Show all directories sending mail (Exim)
+==================================================
+awk '$3 ~ /^cwd/{print $3}' /var/log/exim_mainlog | sort | uniq -c | sed "s|^ *||g" | sort -nr
+
+
+
+
+
+
+
+
+
+
+
+
