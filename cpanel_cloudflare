@@ -1,0 +1,13 @@
+=========================================
+Install mod_cloudflare
+=========================================
+1)
+perl <(curl https://raw.github.com/tylerl/util/master/easyapache/cloudflare.pl) install
+2)
+Go to WHM > EasyApache > Options (Check 'mod_cloudflare') & Save+Rebuild
+
+
+=========================================
+Whitelist Cloudflare IPs
+=========================================
+for each in $(wget -O- https://www.cloudflare.com/ips-v4 | sort); do csf -a $each; done
