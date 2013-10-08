@@ -29,11 +29,11 @@ awk '$3 ~ /^cwd/{print $3}' /var/log/exim_mainlog | sort | uniq -c | sed "s|^ *|
 
 
 
-##################################
+###########################################################
 Mail Related Commands:
-(Plesk, but change maillog path
-if necessary)
-##################################
+(Plesk, but change maillog path if necessary - may only 
+work with PostFix [haven't tested])
+###########################################################
 =====================================================================
 SHOWS ALL EMAIL SENT TO FOLLOWING RECIPIENTS SINCE START OF MAILLOG
 =====================================================================
