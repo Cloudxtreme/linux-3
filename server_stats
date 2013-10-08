@@ -29,12 +29,27 @@ awk '$3 ~ /^cwd/{print $3}' /var/log/exim_mainlog | sort | uniq -c | sed "s|^ *|
 
 
 
+##################################
+Mail Related Commands:
+(Plesk, but change maillog path
+if necessary)
+##################################
+=====================================================================
+SHOWS ALL EMAIL SENT TO FOLLOWING RECIPIENTS SINCE START OF MAILLOG
+=====================================================================
+grep "status=sent" /usr/local/psa/var/log/maillog | awk -F"to=<" '{print $2}' | awk -F'>' '{print $1}' | sort | uniq -c | sort -n
+=====================================================================
 
+=====================================================================
+BREAKS DOWN WHERE EMAILS WERE SENT FROM, TO SPECIFIC ADDRESS, FROM
+START OF MAILLOG
+=====================================================================
+awk -F"to=" '($2 ~ /namehere@example.com/)' /usr/local/psa/var/log/maillog | awk -F"from=" '{print $2}' | awk '{print $1}' | sort | uniq -c | sort -n | tail
+=====================================================================
 
-
-
-
-
-
-
+=====================================================================
+SHOWS MOST FREQUENT USERS TO AUTHENTICATE WITH COURIER
+=====================================================================
+awk '($5 ~ /courier/)' /usr/local/psa/var/log/maillog | awk '($6 ~ /LOGIN/){print $7}' | sort | uniq -c | sort -n
+=====================================================================
 
