@@ -53,3 +53,7 @@ SHOWS MOST FREQUENT USERS TO AUTHENTICATE WITH COURIER
 awk '($5 ~ /courier/)' /usr/local/psa/var/log/maillog | awk '($6 ~ /LOGIN/){print $7}' | sort | uniq -c | sort -n
 =====================================================================
 
+
+KILL ALL DEFUNCT PROCESSES
+=============================
+ps aux | grep -i “defunc” | awk {‘print “kill -9 “$2′} | sh
