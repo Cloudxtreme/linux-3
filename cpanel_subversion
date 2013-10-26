@@ -1,0 +1,10 @@
+mkdir subversion
+cd subversion/
+wget subversion.tigris.org/downloads/subversion-1.6.16.tar.bz2
+bunzip2 subversion-1.6.16.tar.bz2 
+tar -xf subversion-1.6.16.tar 
+wget subversion.tigris.org/downloads/subversion-deps-1.6.16.tar.bz2
+bunzip2 subversion-deps-1.6.16.tar.bz2 
+tar -xf subversion-deps-1.6.16.tar 
+cd subversion-1.6.16
+./configure && make && make install
