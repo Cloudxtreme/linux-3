@@ -1,0 +1,13 @@
+MAKE A CUSTOM PHP.INI FOR EACH USER
+
+(for SuPHP)
+http://morelinux.wordpress.com/2011/12/08/creating-custom-php-ini-in-cpanel-suphp-server-3/
+=========================================================================================================
+CUSTOM PHP INI FOR "http://testing.example.com"
+=========================================================================================================
+root@host [/home/example/public_html/testing]# cp /usr/local/lib/php.ini php.ini <-- copies main php.ini
+root@host [/home/example/public_html/testing]# chown example:example php.ini <-- Corrects ownership
+root@host [/home/example/public_html/testing]# nano .htaccess <-- Open .htaccess file
+ADD THIS IN .HTACCESS: suPHP_ConfigPath /home/example/public_html/testing
+http://testing.example.com/phpinfo.php <-- Use this to test PHP settings
+=========================================================================================================
