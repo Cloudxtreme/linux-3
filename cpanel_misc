@@ -32,3 +32,29 @@ PS_DIVERSITY = 1 --- Default: 1 [1-100] <----- Recommend change to: 2 or more
 # PS_LIMIT within PS_INTERVAL seconds, the IP address will be blocked.
 PS_LIMIT = 10 --- Default: 10 [2-20] <----- Recommend change to: 15-20
 ===================================================================================
+
+
+
+
+=================================================
+FAST WORDPRESS FROM SCRATCH SETUP
+=================================================
+Go to /home/user/
+wget http://wordpress.org/latest.zip
+unzip latest.zip
+chown user:user -R wordpress
+chown user:nobody wordpress
+mv wordpress/wp-config-sample.php wordpress/wp-config.php
+nano wordpress/wp-config.php
+
+In CPanel make:
+- New MySQL DB
+- New MySQL User (take note of password)
+- Then connect the two (grant all privileges)
+
+Enter that info into wp-config.php
+
+Lastly...
+mv public_html public_htmlOLD
+mv wordpress public_html
+=================================================
