@@ -11,3 +11,24 @@ root@host [/home/example/public_html/testing]# nano .htaccess <-- Open .htaccess
 ADD THIS IN .HTACCESS: suPHP_ConfigPath /home/example/public_html/testing
 http://testing.example.com/phpinfo.php <-- Use this to test PHP settings
 =========================================================================================================
+
+
+
+SET HIGHER INITIAL PORT SCAN VALUES IN CSF 
+
+These values will trigger Firewall temp. bans because of low initial values.
+===================================================================================
+FIREWALL VALUES
+WHM > Config Server & Firewall > Firewall Config.
+===================================================================================
+# To specify how many different ports qualifies as a Port Scan you can increase
+# the following from the default value of 1. The risk in doing so will mean
+# that persistent attempts to attack a specific closed port will not be
+# detected and blocked
+PS_DIVERSITY = 1 --- Default: 1 [1-100] <----- Recommend change to: 2 or more
+
+# Port Scan Tracking. This feature tracks port blocks logged by iptables to
+# syslog. If an IP address generates a port block that is logged more than
+# PS_LIMIT within PS_INTERVAL seconds, the IP address will be blocked.
+PS_LIMIT = 10 --- Default: 10 [2-20] <----- Recommend change to: 15-20
+===================================================================================
